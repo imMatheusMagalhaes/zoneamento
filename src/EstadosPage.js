@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Image, Picker, TouchableOpacity, Text } from 'react-native';
 
 function EstadosPage({ navigation }) {
-  
-  [uf, setuf] = useState("")
-  console.log(uf)
+  var [uf, setuf] = useState("")
   return (
-    uf,
     <View style={styles.container}>
       <Image
         source={require('../src/assets/tractor.png')}
@@ -52,7 +49,7 @@ function EstadosPage({ navigation }) {
       </View>
 
       <TouchableOpacity style={styles.botao}
-        onPress={() => navigation.navigate('CidadesPage')}
+        onPress={() => navigation.navigate('CidadesPage', {UF: uf})}
       >
         <Text
           style={styles.textButton}

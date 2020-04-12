@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-async function getCidades(uf) {
+async function getCidades(uf){
 
     const response = await axios.get(`https://api.cnptia.embrapa.br/agritec/v1/municipios?uf=${uf}`, {
         headers: {
@@ -9,7 +9,7 @@ async function getCidades(uf) {
             'Authorization': 'Bearer 2604e7a7-7200-3fd1-914b-41cf9f540696'
         }
     })
-    return response.data
+    return Object.values(response.data)[0];
 }
 
 export default getCidades;

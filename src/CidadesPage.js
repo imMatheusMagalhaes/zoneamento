@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Image, Picker, TouchableOpacity, Text } from 'react-native';
-import getCidades from './services/apiCidades';
 
-function CidadesPage({ navigation }) {
-  const [cidade, setcidade] = useState("")
+function CidadesPage({ route, navigation }) {
+  var [Cidade, setCidade] = useState("");
+  var [Data, setData] = useState([]);
+  const { UF } = route.params;
 
+  useEffect(
+    () => {
+      axios.get(`https://api.cnptia.embrapa.br/agritec/v1/municipios?uf=${UF}`, {
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Accept: 'application/json',
+          'Authorization': 'Bearer 2604e7a7-7200-3fd1-914b-41cf9f540696'
+        }
+      }).then(
+        response => setData(Data = Object.values(response.data)[0])
+      )
+    },
+    [UF]
+  )
 
   return (
-    cidade,
     <View style={styles.container}>
       <Image
         source={require('../src/assets/tractor.png')}
@@ -17,14 +32,14 @@ function CidadesPage({ navigation }) {
         <Picker
           style={styles.pickerStyle}
           mode='dropdown'
-          selectedValue={cidade}
-          onValueChange={(itemValue, itemIndex) => setcidade(cidade = itemValue)} >
+          selectedValue={Cidade}
+          onValueChange={(itemValue, itemIndex) => setCidade(Cidade = itemValue)} >
 
           <Picker.Item label="Cidade" value="" color="#00000090" />
-
-          {getCidades("DF").then(
-            (response) => { console.log(response) }
-          )}
+          {Data.map((item, key) => {
+            console.log(Data),
+            <Picker.Item label={item.nome} value={item.nome} key={key} />
+          })}
 
         </Picker>
       </View>
