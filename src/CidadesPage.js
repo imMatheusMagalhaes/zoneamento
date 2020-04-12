@@ -16,7 +16,7 @@ function CidadesPage({ route, navigation }) {
           'Authorization': 'Bearer 2604e7a7-7200-3fd1-914b-41cf9f540696'
         }
       }).then(
-        response => setData(Data = Object.values(response.data)[0])
+        response => setData(Data = Object.values(response["data"])[0])
       )
     },
     [UF]
@@ -36,14 +36,13 @@ function CidadesPage({ route, navigation }) {
           onValueChange={(itemValue, itemIndex) => setCidade(Cidade = itemValue)} >
 
           <Picker.Item label="Cidade" value="" color="#00000090" />
-          {Data.map((item, key) => {
+          {Data.map((item, key) => (
             console.log(Data),
-            <Picker.Item label={item.nome} value={item.nome} key={key} />
-          })}
+            <Picker.Item label={item["nome"]} value={item["nome"]} key={key} />
+          ))}
 
         </Picker>
       </View>
-
       <TouchableOpacity style={styles.botao}
       >
         <Text
