@@ -3,7 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import EstadosPage from './EstadosPage';
 import CidadesPage from './CidadesPage';
-
+import CulturasPage from './CulturasPage';
+import ZoneamentoPage from './ZoneamentoPage';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,22 @@ function Routes() {
         <Stack.Screen
           name="CidadesPage"
           component={CidadesPage}
+          options={{
+            title: 'Zoneamento'
+          }}
+        />
+
+        <Stack.Screen
+          name="CulturasPage"
+          component={CulturasPage}
+          options={{
+            title: 'Zoneamento'
+          }}
+        />
+
+        <Stack.Screen
+          name="ZoneamentoPage"
+          component={ZoneamentoPage}
           options={{
             title: 'Zoneamento'
           }}

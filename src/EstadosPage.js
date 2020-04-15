@@ -44,12 +44,11 @@ function EstadosPage({ navigation }) {
           <Picker.Item label="MT" value="MT" />
           <Picker.Item label="GO" value="GO" />
           <Picker.Item label="DF" value="DF" />
-
         </Picker>
       </View>
 
       <TouchableOpacity style={styles.botao}
-        onPress={() => navigation.navigate('CidadesPage', {UF: uf})}
+        onPress={() => navigation.navigate('CidadesPage', { UF: uf })}
       >
         <Text
           style={styles.textButton}

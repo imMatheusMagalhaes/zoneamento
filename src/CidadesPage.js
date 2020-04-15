@@ -42,6 +42,7 @@ function CidadesPage({ route, navigation }) {
       >
         <Text
           style={styles.textButton}
+          onPress={() => navigation.navigate('CulturasPage', { CODIGO: Cidade })}
         >Próximo</Text>
 
       </TouchableOpacity>
