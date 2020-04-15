@@ -9,7 +9,7 @@ async function getCidades(uf){
             'Authorization': 'Bearer 2604e7a7-7200-3fd1-914b-41cf9f540696'
         }
     })
-    return Object.values(response.data)[0];
+    return response
 }
 
 export default getCidades;

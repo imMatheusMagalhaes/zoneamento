@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Image, Picker, TouchableOpacity, Text } from 'react-native';
+import getCidades from './services/apiCidades'
 
 function CidadesPage({ route, navigation }) {
   var [Cidade, setCidade] = useState("");
@@ -9,13 +10,7 @@ function CidadesPage({ route, navigation }) {
 
   useEffect(
     () => {
-      axios.get(`https://api.cnptia.embrapa.br/agritec/v1/municipios?uf=${UF}`, {
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          Accept: 'application/json',
-          'Authorization': 'Bearer 2604e7a7-7200-3fd1-914b-41cf9f540696'
-        }
-      }).then(
+      getCidades(UF).then(
         response => setData(Data = Object.values(response["data"])[0])
       )
     },
@@ -23,6 +18,7 @@ function CidadesPage({ route, navigation }) {
   )
 
   return (
+    console.log(Cidade),
     <View style={styles.container}>
       <Image
         source={require('../src/assets/tractor.png')}
@@ -37,8 +33,7 @@ function CidadesPage({ route, navigation }) {
 
           <Picker.Item label="Cidade" value="" color="#00000090" />
           {Data.map((item, key) => (
-            console.log(Data),
-            <Picker.Item label={item["nome"]} value={item["nome"]} key={key} />
+            <Picker.Item label={item["nome"]} value={item["codigoIBGE"]} key={key} />
           ))}
 
         </Picker>

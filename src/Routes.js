@@ -10,13 +10,14 @@ const Stack = createStackNavigator();
 function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{
+      <Stack.Navigator initialRouteName='Home' headerMode='float' mode='modal' screenOptions={{
         headerTintColor: '#fff',
         headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor: '#27ae60'
         },
-      }}>
+      }}
+      >
         <Stack.Screen
           name="EstadosPage"
           component={EstadosPage}
